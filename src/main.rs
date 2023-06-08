@@ -1,27 +1,36 @@
 fn main() {
-    //The Rules of References
-    //
-    //1. At any given time, you can have either one mutable reference or
-    //any number of immutable references.
-    //
-    //2. References must point to valid data.
+    let s = String::from("Hello world");
 
-    let mut s1 = String::from("cabeça de cavalo");
+    let hello = &s[0..5];
+    let world = &s[6..11];
 
-    let r1 = &s1;
-    let r2 = &s1;
+    println!("Slices: {hello} {world} !!!");
 
-    //can only add mutable reference after the immutable references have been dropped
+    let s2 = "hello world";
 
-    //next line is invalid
-    //let r3 = &mut s1;
+    let w1 = first_word(&s);
+    let w2 = first_word(s2);
 
-    println!("r1: {r1}, r2: {r2}");
+    println!("{w1}");
+    println!("{w2}");
 
-    //r1 and r2 are dropped
+    let a = [1, 2, 3, 4, 5];
 
-    //next line is valid
-    let r3 = &mut s1;
+    let slice = &a[0..3];
 
-    println!("r3: {r3}");
+    for item in slice {
+        println!("{item}");
+    }
+}
+
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
 }
