@@ -1,33 +1,27 @@
 fn main() {
-    let mut counter = 0;
+    //Ownership rules
+    //1. Each value in Rust has a variable that's called its owner.
+    //2. There can only be one owner at a time.
+    //3. When the owner goes out of scope, the value will be dropped.
 
-    let result = loop {
-        counter += 1;
+    {
+        // s is not valid here, it's not yet declared
+        let s = String::from("hello"); // s is valid from this point forward
 
-        if counter > 11 {
-            break counter;
-        }
-    };
-
-    println!("The result is {result}!");
-
-    let mut number = 10;
-
-    while number > 0 {
-        println!("{number}!");
-
-        number -= 1;
+        // do stuff with s
     }
+    // this scope is now over, and s is no longer valid
 
-    println!("LIFTOFF!!!!");
+    let x = 5;
+    let y = x; // Copy
 
-    let a = [10, 20, 30, 40, 50];
+    let s1 = String::from("hello");
+    let s2 = s1; // Moved s1 to s2, s1 is no longer valid
 
-    for element in a.iter() {
-        println!("the value is: {element}");
-    }
+    //println!("{}", s1);
 
-    for number in 1..4 {
-        println!("the range value is: {number}");
-    }
+    let s3 = s2.clone(); // Cloned s2, so s2 and s3 are valid
+
+    println!("{s2}");
+    println!("{s3}");
 }
