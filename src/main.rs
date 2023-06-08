@@ -8,11 +8,20 @@ fn main() {
 
     let mut s1 = String::from("cabeça de cavalo");
 
-    change(&mut s1);
+    let r1 = &s1;
+    let r2 = &s1;
 
-    println!("{s1}");
-}
+    //can only add mutable reference after the immutable references have been dropped
 
-fn change(some_string: &mut String) {
-    some_string.push_str(", world");
+    //next line is invalid
+    //let r3 = &mut s1;
+
+    println!("r1: {r1}, r2: {r2}");
+
+    //r1 and r2 are dropped
+
+    //next line is valid
+    let r3 = &mut s1;
+
+    println!("r3: {r3}");
 }
