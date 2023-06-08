@@ -1,17 +1,33 @@
 fn main() {
-    let number = 5;
+    let mut counter = 0;
 
-    if number < 10 {
-        println!("first condition was true");
-    } else if number < 22 {
-        println!("second condition was true");
-    } else {
-        println!("condition was false");
+    let result = loop {
+        counter += 1;
+
+        if counter > 11 {
+            break counter;
+        }
+    };
+
+    println!("The result is {result}!");
+
+    let mut number = 10;
+
+    while number > 0 {
+        println!("{number}!");
+
+        number -= 1;
     }
 
-    let condition = true;
+    println!("LIFTOFF!!!!");
 
-    let number = if condition { 5 } else { 6 };
+    let a = [10, 20, 30, 40, 50];
 
-    println!("Number is {number}!");
+    for element in a.iter() {
+        println!("the value is: {element}");
+    }
+
+    for number in 1..4 {
+        println!("the range value is: {number}");
+    }
 }
