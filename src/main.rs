@@ -6,13 +6,13 @@ fn main() {
     //
     //2. References must point to valid data.
 
-    let s1 = String::from("cabeça de cavalo");
-    let len = calculate_length(&s1);
+    let mut s1 = String::from("cabeça de cavalo");
 
-    println!("The length of \"{s1}\" is {len}");
+    change(&mut s1);
+
+    println!("{s1}");
 }
 
-fn calculate_length(s: &String) -> usize {
-    let len = s.len();
-    len
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
 }
