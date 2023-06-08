@@ -4,24 +4,36 @@ fn main() {
     //2. There can only be one owner at a time.
     //3. When the owner goes out of scope, the value will be dropped.
 
-    {
-        // s is not valid here, it's not yet declared
-        let s = String::from("hello"); // s is valid from this point forward
+    let s = String::from("hello");
+    takes_ownership(s); //s moved to the scope of the function takes_ownership, s is no longer valid
 
-        // do stuff with s
-    }
-    // this scope is now over, and s is no longer valid
+    //the following line will result in a compilation error "borrow of moved value"
+    //println!("{s}");
 
-    let x = 5;
-    let y = x; // Copy
+    let x = 10;
+    makes_copy(10); // primitive values are copied by default
+    println!("{x}");
 
-    let s1 = String::from("hello");
-    let s2 = s1; // Moved s1 to s2, s1 is no longer valid
+    let s1 = gives_ownership();
+    let s2 = String::from("hello");
+    let s3 = takes_and_gives_back(s2);
 
-    //println!("{}", s1);
+    println!("s1 = {s1}, s3 = {s3}");
+}
 
-    let s3 = s2.clone(); // Cloned s2, so s2 and s3 are valid
+fn takes_ownership(some_string: String) {
+    println!("{some_string}");
+}
 
-    println!("{s2}");
-    println!("{s3}");
+fn makes_copy(some_integer: i32) {
+    println!("{some_integer}");
+}
+
+fn gives_ownership() -> String {
+    let some_string = String::from("hello");
+    some_string
+}
+
+fn takes_and_gives_back(a_string: String) -> String {
+    a_string
 }
