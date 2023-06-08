@@ -1,13 +1,33 @@
 fn main() {
-    let x = 5;
+    //INTEGER
 
-    println!("{}", x);
+    let a = 98_222; //Decimal
+    let b = 0xff; //Hex
+    let c = 0o77; //Octal
+    let d = 0b1111_0001; //Binary
+    let e = b'A'; //Byte (u8 only)
 
-    let x = "mamao";
+    let f: u8 = 255;
 
-    println!("{}", x);
+    //Floating-point numbers
 
-    const BANANA_COUNT: u32 = 100_000;
+    let g = 2.0;
+    let h: f32 = 3.0;
 
-    println!("{}", BANANA_COUNT);
+    //Tuples
+
+    let tup = ("banana", 100_000);
+
+    let (fruit, count) = tup;
+
+    let count = tup.1;
+
+    //Arrays
+
+    let error_codes = [200, 404, 500];
+    let not_found = error_codes[1];
+
+    //8 values all set to zero
+    let byte = [0; 8];
+
 }
