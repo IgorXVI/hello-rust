@@ -1,12 +1,17 @@
 fn main() {
-    let sum = my_function(11, 22);
+    let number = 5;
 
-    println!("the sum is {sum}");
-}
+    if number < 10 {
+        println!("first condition was true");
+    } else if number < 22 {
+        println!("second condition was true");
+    } else {
+        println!("condition was false");
+    }
 
-fn my_function(x: i32, y: i32) -> i32 {
-    println!("The value of x is {x}");
-    println!("The value of y is {y}");
+    let condition = true;
 
-    x + y
+    let number = if condition { 5 } else { 6 };
+
+    println!("Number is {number}!");
 }
